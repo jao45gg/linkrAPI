@@ -93,8 +93,8 @@ export async function likedPostDB(id, user_id){
     const client = await pool.connect()
     try {
 
-      return client.query(`INSERT INTO likes (user_id, post_id, liked) 
-                                VALUES ($1, $2, $3)`, [user_id, id, 'true' ])
+      return client.query(`INSERT INTO likes (user_id, post_id) 
+                                VALUES ($1, $2)`, [user_id, id])
 
     } catch (err) {
         console.error("Error updating refresh token", err);
